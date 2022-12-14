@@ -2,9 +2,10 @@ Feature: Update a Post
 
   Background:
     * url baseUrl
-    * def createFeature = call read('posts/post.feature')
+    * def createFeature = call read('../posts/post.feature')
     * def bearerToken = createFeature.bearerToken
     * def id = createFeature.postId
+    * def postsUrlBase = '/api/v1/posts/' + id
 
   Scenario: Update a Post by ID
 

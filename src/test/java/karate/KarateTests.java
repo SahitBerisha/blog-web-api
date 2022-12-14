@@ -11,21 +11,15 @@ public class KarateTests {
 
   @Karate.Test
   Karate createAlbumTest() {
-    return Karate.run("classpath:karate/albums/post.feature");
+    return Karate.run("classpath:karate/albums/post.feature",
+        "classpath:karate/albums/get.feature");
   }
 
   @Karate.Test
-  Karate readAlbumTest() {
-    return Karate.run("classpath:karate/albums/get.feature");
-  }
-
-  @Karate.Test
-  Karate createPostTest() {
-    return Karate.run("classpath:karate/posts/post.feature");
-  }
-
-  @Karate.Test
-  Karate readPostTest() {
-    return Karate.run("classpath:karate/posts/get.feature");
+  Karate postsFeatureTests() {
+    return Karate.run("classpath:karate/posts/post.feature",
+        "classpath:karate/posts/get.feature",
+        "classpath:karate/posts/update.feature",
+        "classpath:karate/posts/delete.feature");
   }
 }
