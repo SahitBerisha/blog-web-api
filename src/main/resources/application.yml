@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: blogosphere
+  jpa:
+    open-in-view: off
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+          batch_size: 5
+        order_inserts: on
+        order_updates: on
+        batch_versioned_data: on
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://${env.DB_HOST}:${env.DB_PORT}/${env.DB_SCHEMA}
+    username: ${env.DB_USERNAME}
+    password: ${env.DB_PASSWORD}
+    hikari:
+      pool-name: 'blogosphere connection pool'
+      maximum-pool-size: ${env.DB_MAXIMUM_POOL_SIZE}
+logging:
+  pattern:
+    level: '%5p [%X{X-B3-TraceId:-}]'
+  level:
+    sql: debug
+    com.blogosphere: debug
+rsa:
+  private-key: ${env.PRIVATE_KEY}
+  public-key: ${env.PUBLIC_KEY}
